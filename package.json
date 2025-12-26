@@ -1,0 +1,16 @@
+{
+  "name": "dvdplaza-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "urls.js",
+  "scripts": {
+    "download": "sh download.sh",
+    "preview": "serve ./output"
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}
