@@ -7,6 +7,7 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
+    "scrape": "node main.js",
     "get-search-url-initial": "node get-search-url-initial.js",
     "get-and-parse-search-page": "node get-and-parse-search-page.js",
     "post-url-to-thread-page-url": "node post-url-to-thread-page-url.js",
