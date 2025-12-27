@@ -152,6 +152,41 @@ async function main() {
       }
     }
 
+    // Helper function to download threadUrls
+    async function downloadThreadUrls() {
+      // Get unique threadUrls from current batch
+      const uniqueThreadUrls = [
+        ...new Set(lock.threadUrls.map((t) => t.threadUrl)),
+      ];
+
+      const urlsToDownload = uniqueThreadUrls.filter(
+        (url) => !lock.downloadedUrls.includes(url)
+      );
+
+      if (urlsToDownload.length === 0) {
+        return;
+      }
+
+      console.log(
+        `\nDownloading ${urlsToDownload.length} thread URLs (max ${MAX_CONCURRENT_DOWNLOADS} concurrent)...`
+      );
+
+      const downloadResults = await processDownloadsWithLimit(
+        urlsToDownload,
+        MAX_CONCURRENT_DOWNLOADS
+      );
+
+      // Update downloaded URLs in lock file
+      for (const result of downloadResults) {
+        if (result.success) {
+          lock.downloadedUrls.push(result.url);
+        } else {
+          console.error(`Failed to download ${result.url}: ${result.error}`);
+        }
+      }
+      await saveLock(lock);
+    }
+
     // Step 2-4: Get and parse search pages until done
     while (currentSearchUrl) {
       console.log(`Fetching and parsing search page: ${currentSearchUrl}`);
@@ -174,10 +209,11 @@ async function main() {
         nextSearchUrl = searchPageData.nextPage.nextPageUrl;
       } else if (searchPageData.nextPage.getSearchUrlNextArgs) {
         // Step 5: When we hit a page that requires getSearchUrlNext,
-        // convert all postUrls to threadUrls first before continuing
+        // convert all postUrls to threadUrls and download them before continuing
         const { userId, before } = searchPageData.nextPage.getSearchUrlNextArgs;
         if (userId && before) {
           await convertPostUrlsToThreadUrls();
+          await downloadThreadUrls();
           
           console.log(
             `Getting next search URL with userId=${userId}, before=${before}`
@@ -191,9 +227,10 @@ async function main() {
           break;
         }
       } else {
-        // No next page - convert remaining postUrls and stop
+        // No next page - convert remaining postUrls, download them, and stop
         console.log("No next page found, stopping search page collection");
         await convertPostUrlsToThreadUrls();
+        await downloadThreadUrls();
         break;
       }
 
@@ -206,33 +243,8 @@ async function main() {
     lock.currentSearchUrl = null;
     await saveLock(lock);
 
-    // Step 6: Deduplicate threadUrls and download
-    const uniqueThreadUrls = [
-      ...new Set(lock.threadUrls.map((t) => t.threadUrl)),
-    ];
-    console.log(`\nFound ${uniqueThreadUrls.length} unique thread URLs`);
-
-    const urlsToDownload = uniqueThreadUrls.filter(
-      (url) => !lock.downloadedUrls.includes(url)
-    );
-    console.log(
-      `Downloading ${urlsToDownload.length} URLs (max ${MAX_CONCURRENT_DOWNLOADS} concurrent)...`
-    );
-
-    const downloadResults = await processDownloadsWithLimit(
-      urlsToDownload,
-      MAX_CONCURRENT_DOWNLOADS
-    );
-
-    // Update downloaded URLs in lock file
-    for (const result of downloadResults) {
-      if (result.success) {
-        lock.downloadedUrls.push(result.url);
-      } else {
-        console.error(`Failed to download ${result.url}: ${result.error}`);
-      }
-    }
-    await saveLock(lock);
+    // Final download of any remaining threadUrls (should be none if logic is correct)
+    await downloadThreadUrls();
 
     console.log(`\nCompleted! Downloaded ${lock.downloadedUrls.length} URLs`);
   } catch (error) {
