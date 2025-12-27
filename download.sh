@@ -22,6 +22,12 @@ else
   OUTPUT_FILE="./output/$DECODED_PATH/index.html"
 fi
 
+# Early return if file already exists
+if [ -f "$OUTPUT_FILE" ]; then
+  echo "File already exists: $OUTPUT_FILE"
+  exit 0
+fi
+
 # Download with monolith
 monolith "$URL" -o "$OUTPUT_FILE"
 
