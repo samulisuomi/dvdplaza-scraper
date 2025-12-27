@@ -8,9 +8,9 @@
   "main": "urls.js",
   "scripts": {
     "get-search-url-initial": "node get-search-url-initial.js",
-    "get-search-url-next": "node get-search-url-next.js",
     "get-and-parse-search-page": "node get-and-parse-search-page.js",
     "post-url-to-thread-page-url": "node post-url-to-thread-page-url.js",
+    "get-search-url-next": "node get-search-url-next.js",
     "download": "sh download.sh",
     "preview": "serve ./output"
   },
