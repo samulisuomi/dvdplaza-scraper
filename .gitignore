@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 output/*
 !output/.gitkeep
+
+.scraper-lock.json

@@ -30,6 +30,9 @@ function findPostUrls(html) {
 
   while ((match = regex.exec(html)) !== null) {
     const path = match[1];
+    if (!path.startsWith("posts/")) {
+      continue;
+    }
     urls.push(`https://www.dvdplaza.fi/${path}`);
   }
 

@@ -5,7 +5,7 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "urls.js",
+  "main": "main.js",
   "scripts": {
     "get-search-url-initial": "node get-search-url-initial.js",
     "get-and-parse-search-page": "node get-and-parse-search-page.js",
