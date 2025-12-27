@@ -12,9 +12,9 @@
     "post-url-to-thread-page-url": "node post-url-to-thread-page-url.js",
     "get-search-url-next": "node get-search-url-next.js",
     "download": "sh download.sh",
-    "preview": "serve ./output"
+    "serve": "http-server ./output -p 0"
   },
   "dependencies": {
-    "serve": "^14.2.5"
+    "http-server": "^14.1.1"
   }
 }
