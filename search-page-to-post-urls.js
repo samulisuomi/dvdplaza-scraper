@@ -1,4 +1,4 @@
-async function getPostUrls(url) {
+async function searchPageToPostUrls(url) {
   const response = await fetch(url, {
     method: "GET",
     redirect: "follow",
@@ -35,7 +35,7 @@ if (require.main === module) {
         console.error("Error: URL parameter is required");
         process.exit(1);
       }
-      const urls = await getPostUrls(url);
+      const urls = await searchPageToPostUrls(url);
       urls.forEach((url) => console.log(url));
       process.exit(0);
     } catch (error) {
@@ -45,4 +45,4 @@ if (require.main === module) {
   })();
 }
 
-module.exports = getPostUrls;
+module.exports = searchPageToPostUrls;
