@@ -9,6 +9,7 @@
   "scripts": {
     "get-search-url-initial": "node get-search-url-initial.js",
     "get-search-url-next": "node get-search-url-next.js",
+    "search-page-to-post-urls": "node search-page-to-post-urls.js",
     "download": "sh download.sh",
     "preview": "serve ./output"
   },
