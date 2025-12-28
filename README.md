@@ -4,6 +4,8 @@ R.I.P. DVDPlaza.fi
 
 A quick and dirty pile of code to scrape your own DVDPlaza.fi posting history before the site shuts down at the end of 2025.
 
+**Will not work after the original servers are gone as this relies on the search functionality of the forum.**
+
 ### Prerequisites
 
 1. macOS
