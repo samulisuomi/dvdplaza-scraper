@@ -42,7 +42,7 @@ This runs a crude web server on your machine. You can open the link in the brows
 
 ### How to backup the data
 
-Create a .zip file out of the contents of `./output`.
+Create a .zip file out of the contents of `./output`. Store the .zip somewhere, for example Dropbox, Google Drive or iCloud.
 
 Note that `./output` is gitignored so it can easily get lost otherwise.
 
