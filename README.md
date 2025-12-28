@@ -44,7 +44,7 @@ This runs a crude web server on your machine. You can open the link in the brows
 
 Create a .zip file out of the contents of `./output`. Store the .zip somewhere, for example Dropbox, Google Drive or iCloud.
 
-> ⓘ Note that `./output` is gitignored so it can easily get lost otherwise.
+> ⓘ Note that the contents of `./output` are gitignored so it can easily get lost otherwise.
 
 You can also back up `.scraper-lock.json` – it contains metadata you might be interested in the future, like the list of all your post URLs.
 
