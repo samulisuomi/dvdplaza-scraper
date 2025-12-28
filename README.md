@@ -8,10 +8,10 @@ A quick and dirty pile of code to scrape your own DVDPlaza.fi posting history be
 
 ### Prerequisites
 
-1. macOS
-2. Install Node.js 25, e.g. via NVM
-3. Install monolith, e.g. `brew install monolith`
-4. Install deps:
+0. (Only tested on macOS)
+1. Install Node.js 25, e.g. via NVM
+2. Install [monolith](https://github.com/Y2Z/monolith), e.g. `brew install monolith`
+3. Install deps:
    ```
    npm ci
    ```
