@@ -38,7 +38,7 @@ npm run serve
 
 This runs a crude web server on your machine. You can open the link in the browser that's printed on the command line.
 
-> ⓘ By default, the server prints out a listing of all files inside the output. Do note the behavior is different if you had a post on the first page on the thread vs not. The user experience is a bit better on the latter case, because the server will list all the available pages, while in the former case you have to keep clicking on the DVDPlaza UI, or peek into the `output` directory in your file explorer.
+> ⓘ By default, the server prints out a directory listing unless the folder has index.html in it. This means the navigation behavior when you open a thread folder is different if you had a post on the first page on the thread vs only on later pages. The user experience is a bit better on the latter case, because the server will list all the available page folders, while in the former case you have to do guesswork by clicking on the DVDPlaza UI that opens up (or peek into the `output` directory in your file explorer).
 
 ### How to backup the data
 
