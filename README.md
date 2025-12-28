@@ -46,6 +46,6 @@ Note that `./output` is gitignored so it can easily get lost otherwise.
 
 You can also back up `.scraper-lock.json` – it contains metadata you might be interested in the future, like the list of all your post URLs.
 
-### How to view backed up data
+### How to view the backed up data
 
 Put the contents of `./output` onto a web server. E.g. clone this repo on another computer, extract the .zip into `./output` and run `npm run serve`.
