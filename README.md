@@ -1,5 +1,9 @@
 ## dvdplaza-scraper
 
+R.I.P. DVDPlaza.fi
+
+A quick and dirty pile of code to scrape your own DVDPlaza.fi posting history before the site shuts down at the end of 2025.
+
 ### Prerequisites
 
 1. macOS
