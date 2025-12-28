@@ -12,6 +12,10 @@
 
 ### Demo
 
+https://github.com/user-attachments/assets/9b7e5712-412a-41be-b564-9190128dd4a9
+
+https://github.com/user-attachments/assets/b5c4f63b-044b-4bdc-9ccf-52585cc2f423
+
 ### How to scrape
 
 ```
